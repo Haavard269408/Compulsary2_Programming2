@@ -40,10 +40,13 @@ void AMyCharacter::Move(const FInputActionValue& Value)
 void AMyCharacter::LookAround(const FInputActionValue& Value)
 {
 
-	GEngine->AddOnScreenDebugMessage(-1, 3.f, FColor::Emerald, TEXT("Looking"));
-	FVector2D MovementVector = Value.Get<FVector2D>();
+	FVector2D LookAroundVector = Value.Get<FVector2D>();
 
-
+	if (Controller != nullptr)
+	{
+		AddControllerYawInput(LookAroundVector.X);
+		AddControllerPitchInput(LookAroundVector.Y);
+	}
 
 }
 
