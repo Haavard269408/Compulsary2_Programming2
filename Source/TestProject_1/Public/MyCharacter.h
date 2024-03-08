@@ -46,9 +46,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	UInputAction* LookAction;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
-	UInputAction* Speed;
-
 	void Move(const FInputActionValue& Value);
 
 	void LookAround(const FInputActionValue& Value);
