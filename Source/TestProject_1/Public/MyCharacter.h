@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "FPS_Projectile.h"
 #include "MyCharacter.generated.h"
 
 class UInputMappingContext;
@@ -46,13 +47,37 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
 	UInputAction* LookAction;
 
+<<<<<<< HEAD
+=======
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Input")
+	UInputAction* FireAction;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
+	UInputAction* Speed;
+
+	// Gun muzzle offset from the camera location.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	FVector MuzzleOffset;
+
+
+>>>>>>> 5343a35d6b6fad2e47094b160eae796ef2975d8b
 	void Move(const FInputActionValue& Value);
 
 	void LookAround(const FInputActionValue& Value);
 
+	UFUNCTION()
+	void Fire();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	// Projectile class to spawn.
+	UPROPERTY(EditDefaultsOnly, Category = Projectile)
+	TSubclassOf<class AFPS_Projectile> ProjectileClass;
+
+
 
 public:	
 	// Called every frame
